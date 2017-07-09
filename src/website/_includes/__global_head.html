@@ -1,0 +1,20 @@
+<head>
+	<title> {% if page.title %}{{ page.title }}{{ page.title_seperator }}{% endif %}{{ page.title_website}}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="{{ page.meta_description }}">
+	<meta name="keywords" content="{{ page.meta_keywords }}">
+
+	{% if site.mode == "production" %}
+		<link rel="stylesheet" href="assets/css/styles.min.css"/>
+		{% include __global_head_favicons.html %}
+		{% include __global_head_og.html %}
+	{% else %}
+		<link rel="stylesheet" href="assets/css/styles.css"/>
+	{% endif %}
+	{% if site.mode == "production" %}
+		<script type="text/javascript" src="assets/libs/js/jquery/jquery-2.2.4.min.js"></script>
+	{% else %}
+		<script type="text/javascript" src="assets/libs/js/jquery/jquery-2.2.4.js"></script>
+	{% endif %}
+</head>

@@ -1,0 +1,219 @@
+// ---------------------------------------------------------------
+// transitions extended versions
+$trans-spd: 		400ms !default;
+$trans-spd-fast:	400ms / 1.5 !default;
+$trans-kind:		ease-in-out !default;
+$trans-kind-all:	$trans-kind !default;
+
+%trans-all {
+	transition: all $trans-spd $trans-kind;
+}
+%trans-all-fast {
+	transition: all $trans-spd-fast $trans-kind;
+}
+
+
+// Padding and Margin Generation
+/*
+	$properties:
+		padding
+		padding-top
+		padding-right
+		padding-bottom
+		padding-left
+		margin
+		margin-top
+		margin-right
+		margin-bottom
+		margin-left;
+*/
+$properties: padding padding-top padding-right padding-bottom padding-left margin margin-top margin-right margin-bottom margin-left;
+@each $property in $properties {
+  $i: index($properties, $property);
+
+  @for $n from 0 through 10 {
+    $value: 10px * $n;
+    .#{$property}-#{$n} {
+      #{$property}: $value !important;
+    }
+  }
+}
+/// Output:
+//  .padding-top-0: 0px !important;
+//  .padding-top-1: 10px !important;
+//  ...
+//  .margin-left-19 { margin-left: 190px !important; }
+//  .margin-left-20 { margin-left: 200px !important; }
+
+
+// Color Mixin (colors.scss)
+/*
+	@include generateColors('name-color', 'color', 'invert-color');
+	@include generateColors('color-red', '#FF0000', '#fff');
+*/
+@mixin generateColors($name, $color, $pair: #fff){
+	.#{$name} {
+		background: $color !important;
+
+		@if $pair == #fff {
+			 color:$pair !important;
+
+			 svg {
+					fill:$pair !important;
+			 }
+		} @else {
+			 color:$pair!important;
+
+			 svg {
+					fill:$pair !important;
+			 }
+		}
+
+		@if $color == #fff {
+			.slide.whiteSlide & {
+				box-shadow: 0 0 0 1px rgba(41, 41, 41, 0.2) inset, inset 0 -100px 0 rgba(41, 41, 41, 0);
+			}
+		}
+	}
+}
+
+// ---------------------------------------------------------------
+/// https://css-tricks.com/snippets/sass/px-to-em-functions/
+/*
+h1 {
+	font-size: em(32);
+}
+*/
+@function em($pixels, $context: $browser-context) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+	@return $pixels / $context * 1em;
+}
+
+
+
+
+// use it
+/*
+@include selection {
+    color: white;
+    background: black;
+}
+*/
+// define it
+@mixin selection {
+    ::-moz-selection { @content; }
+    ::selection { @content; }
+}
+
+
+/// https://css-tricks.com/snippets/sass/mixin-offset-positioning/
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+/// https://css-tricks.com/snippets/sass/custom-scrollbars-mixin/
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+/// @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  	// For Google Chrome
+	::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+	// For Internet Explorer
+	body {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}
+////////////////////////////////////////////////////////////////////////
+/// https://css-tricks.com/snippets/sass/
+@mixin centerer($horizontal: true, $vertical: true) {
+	position: absolute;
+	@if ($horizontal and $vertical) {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @else if ($horizontal) {
+		left: 50%;
+		transform: translate(-50%, 0);
+	} @else if ($vertical) {
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}
+
+////////////////////////////////////////////////////////////////////////
+/// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+/*
+.faded-text {
+	@include opacity(0.8);
+}
+*/
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+////////////////////////////////////////////////////////////////////////
+/// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+/*
+.container-with-floated-children {
+	@extend %clearfix;
+}
+*/
+%clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.clearfix {
+	@extend %clearfix;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+/// hide div + extend
+%hidden {
+	display: none;
+	visibility: hidden;
+}
+.hidden {
+	@extend %hidden;
+}

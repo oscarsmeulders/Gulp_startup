@@ -1,0 +1,56 @@
+# Where things are
+source: src/website/
+baseurl: "http://localhost:3000"
+
+# mode to development or production
+mode: "development"
+
+destination:  ./_site
+
+
+plugins_dir:  _plugins
+layouts_dir:  _layouts
+data_dir:     _data
+includes_dir: _includes
+
+# This will keep these files, folders when (re-)generating Jekyll.
+keep_files: ['assets']
+
+# This will require each of these gems automatically.
+gems: [jekyll-seo-tag, jekyll-sitemap]
+
+permalink: /:categories/:title
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      layout_part: "empty"
+      slug: ""
+
+      title: ""
+      title_website: "Title of website"
+      title_seperator: " | "
+      title_navigation: "none"
+
+      meta_description: ""
+      meta_keywords: ""
+
+      og_title: ""			# max. 100 characters // best 60 - 80
+      og_description: ""	# max. 300 characters
+      og_type: ""			# website, article, blog
+      og_url: ""			# include http://
+      og_image_url: ""		# 1200 x 627px, include http://
+
+      twitter_title: ""			# max. 70 characters
+      twitter_description: ""	# max. 200 characters
+      twitter_type: ""			# summary, photo, video, product, app, gallery, large version
+      twitter_url: ""			# include http://
+      twitte_image_url: ""		# min. 280 x 150px, not more than 1MB., include http://
+
+      download_title: "Downloads"
+      download_intro: "Onderstaand staan de downloadbare files. Meeste files zijn ontwerper-files dwz dat je hiervoor specifike software nodig hebt, denk dan aan Adobe of Sketch."
+      download_pdf: "Download PDF (Acrobat reader)"
+      download_psd: "Download PSD (Photoshop)"

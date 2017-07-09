@@ -1,0 +1,79 @@
+/* -------------------------------------------------------------------
+	layzr
+
+	https://photography.tutsplus.com/tutorials/who-needs-amp-how-to-lazy-load-responsive-images-quick-and-easy-with-layzr--cms-27221
+	http://callmecavs.com/layzr.js/
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/layzr.js/2.0.2/layzr.min.js"></script>
+
+	<div class="ratio_3_2">
+		<img alt="Vulture"
+			data-normal="assets/images/vulture.jpg"
+			data-retina="assets/images/vulture@2x.jpg"
+			data-srcset="assets/images/vulture_sml.jpg 320w, assets/images/vulture_med.jpg 640w, assets/images/vulture.jpg 960w" >
+	</div>
+
+	- data-normal = required
+	- data-retina = optional
+	- data-srcset = optional, when used this is overruling everything else.
+	- loading animation will always shown.
+	- look at the threshold in the js. More means faster loading of the images (think: 100% is double screen height).
+------------------------------------------------------------------- */
+
+$layzr-image-bg:					#333 !default;
+$layzr-loading-bg:					#444 !default;
+$layzr-loading-animation-speed:		20s !default;
+$layzr-loading-w:					0rem !default;
+$layzr-loading-h:					$layzr-loading-w !default;
+$layzr-loading-border-kind:			solid !default; // solid, double
+$layzr-loading-border-size:			2rem !default;
+$layzr-loading-border-color:		#fff !default;
+
+// calculated variable !!!! not to overrule
+$layzr-loading-w-half:				(($layzr-loading-border-size * 2) + $layzr-loading-w) / 2 !default;
+$layzr-loading-h-half:				(($layzr-loading-border-size * 2) + $layzr-loading-h) / 2 !default;
+
+div[class^="ratio_"]{
+	position: relative;
+	width: 100%;
+	background-color: $layzr-image-bg;
+	> img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	&:after {
+		content: '';
+		display: block;
+		width: $layzr-loading-w;
+		height: $layzr-loading-h;
+		border-radius: 50%;
+		border: $layzr-loading-border-size $layzr-loading-border-kind $layzr-loading-bg;
+		border-left: $layzr-loading-border-size $layzr-loading-border-kind $layzr-loading-border-color;
+		position: absolute;
+		top: calc(50% -  #{$layzr-loading-h-half});
+		left: calc(50% - #{$layzr-loading-w-half});
+		animation: layzr-spin $layzr-loading-animation-speed infinite linear;
+	}
+}
+.ratio_3_2 { /*padding-top: calc( 100% * (2 / 3) );*/
+	padding-top: 66.666667%;
+}
+.ratio_4_3 {
+	padding-top: 75%;
+}
+.ratio_16_9 {
+	padding-top: 56.25%;
+}
+
+@keyframes layzr-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,0 +1,26 @@
+.pointer-events {
+	pointer-events: all !important;
+}
+.disable-pointer-events {
+	pointer-events: none !important;
+}
+.pointer {
+	cursor: pointer;
+}
+.disableClick {
+	pointer-events: none;
+}
+
+.noSelect,.noSelect *,
+.disableSelect, .disableSelect * {
+	-webkit-touch-callout: none!important;
+	user-select: none!important;
+}
+.selectable,.selectable *,
+.enableSelect, .enableSelect * {
+	-webkit-touch-callout: auto!important;
+	user-select: auto!important;
+}
+
+
+

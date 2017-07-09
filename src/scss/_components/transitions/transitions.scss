@@ -1,0 +1,102 @@
+/*
+	.scene		: yes can will be animated
+	.scene-a	: type of animatie .scene-a is default
+	.scene-d	: is delayed
+	.scene-d-1	: is how much delay?
+
+	We need to add all those classes in the element
+		or
+	we need to extend:
+		@extend .scene
+		@extend .scene-a
+		@extend .scene-d
+		@extend .scene-d-10
+------------------------------------------------------------------- */
+
+@import 'animate';																// load external animations
+$page-open-animation-duration:			0.5s !default;								// animation duration, and first delay
+$page-open-animation-kind:				ease-in-out !default;						// kind of easing
+$page-open-delay-starter:				$page-open-animation-duration !default;		// start with first delay, don't use zero
+$page-open-delay-multiplier:			0.10s !default;								// delay between different delay numbers
+$page-open-delay-multiplier-backwards:	0.05s !default
+$page-open-delay-count:					10 !default;								// how many different delays do we need?
+
+
+.scene--global {
+	.scene, .s {
+		animation-duration: $page-open-animation-duration;
+		transition-timing-function: $page-open-animation-kind;
+		animation-fill-mode: both;
+		&--delayed, &--d {
+			animation-delay: $page-open-delay-starter;
+			@for $i from 1 through $page-open-delay-count {
+				&--#{$i} {
+					animation-delay: ($i * $page-open-delay-multiplier);
+				}
+			}
+		}
+		/* ////////////////////////
+			Define here all different kinds of animations
+			.scene-a is default
+			globaly more can be found on:
+			https://daneden.github.io/animate.css/
+		////////////////////////*/
+		&--animate, &--a {
+			animation-name: fadeStart;
+			&--bounce {
+				@extend .bounce;
+			}
+			&--up {
+				animation-name: fadeInUpSmall;
+			}
+		}
+
+
+	}
+	&.is-exiting, &.is-exit, &.is-reverse {
+		.scene, .scene--noexiting, .s {
+			animation-direction: alternate-reverse !important;
+			animation-delay: 0s !important;
+			&--delayed, &--d {
+				animation-delay: 0 !important;
+			}
+			&--animate, &--a {
+				//animation-name: fadeOut !important;
+			}
+		}
+	}
+}
+
+@keyframes fadeInUpSmall {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 20px, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+@keyframes fadeStart {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(0, 20px, 0);
+	}
+}

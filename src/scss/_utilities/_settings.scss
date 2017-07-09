@@ -1,0 +1,202 @@
+// ----------------------------------------------------------------------------------------
+// TYPOGRAPHY
+// ----------------------------------------------------------------------------------------
+//@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic);
+//@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+//@import url(https://fonts.googleapis.com/css?family=Heebo:400,300,500);
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
+
+//@import 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900';
+
+
+$breakpoints: (
+	'small': 320px,
+	'medium': 768px,
+	'large': 920px,
+	'xlarge': 1180px,
+	'xxlarge': 1580px,
+	'xxxlarge': 1900px
+);
+
+$breakpoints-margins: (
+	'small': 20px,
+	'medium': 20px,
+	'large': 20px,
+	'xlarge': 30px,
+	'xxlarge': 40px,
+	'xxxlarge': 40px
+);
+
+$breakpoints-layout-title-margins-top: (
+	'small': 20px,
+	'medium': 20px,
+	'large': 20px,
+	'xlarge': 20px,
+	'xxlarge': 20px,
+	'xxxlarge': 20px
+);
+$breakpoints-layout-title-paddings-top: (
+	'small': 10px,
+	'medium': 10px,
+	'large': 10px,
+	'xlarge': 10px,
+	'xxlarge': 10px,
+	'xxxlarge': 10px
+);
+$breakpoints-content-title-paddings-top: (
+	'small': 10px,
+	'medium': 10px,
+	'large': 10px,
+	'xlarge': 10px,
+	'xxlarge': 10px,
+	'xxxlarge': 10px
+);
+
+
+$font-body-family:  "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+$font-body-weight: 400;
+
+$font-head-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+$font-head-weight: 600;
+
+
+// font sizes by typi
+/*
+html {
+	@include typi-base();
+}
+h1 {
+	@include typi($h1-sizes);
+}
+*/
+
+$typi: (
+
+		null: (13px, 1.8em),
+		small: (13px, 1.8em),
+		medium: (14px, 1.8em),
+		large: (14px, 1.8em),
+		xlarge: (14px, 1.8em),
+		xxlarge: (15px, 1.8em),
+		xxxlarge: (16px, 1.8em)
+
+);
+
+$h1-sizes: (
+	null: 2em,
+	small: 2em,
+	large: 2em
+);
+$h2-sizes: (
+	null: 1.3em
+);
+$h3-sizes: (
+	null: 1.6em
+);
+$h4-sizes: (
+	null: 1.4em
+);
+$h5-sizes: (
+	null: 1.2em
+);
+
+
+// ----------------------------------------------------------------------------------------
+$colors: (
+	primary:		#00a291,
+	secondary:		#00beb3,
+	accent:			#FF0000,
+	white:			#fff,
+	black:			#000,
+	gray-light:		#d0d0d0,
+	gray-medium:	#888888,
+	gray-dark:		#555555,
+	download-bg:	#d4e6e9
+);
+
+
+// --------------------------------------------
+// colors make some default from the map $colors
+//
+$white:						map-get($colors, white);
+$black:						map-get($colors, black);
+$color-white:				map-get($colors, white);
+$color-black:				map-get($colors, black);
+$color-primary:				map-get($colors, primary);
+$color-secondary:			map-get($colors, secondary);
+
+
+$color-body-bg:				map-get($colors, gray-light);
+$color-footer-bg:			rgba( map-get($colors, gray-light), 0.5);
+$color-headings:			map-get($colors, black);
+$color-p:					map-get($colors, black);
+
+$color-a:					map-get($colors, primary);
+$color-a-hover:				darken ( map-get($colors, primary), 10);
+
+$color-scrollbar-for:		map-get($colors, black);
+$color-scrollbar-back:		map-get($colors, white);
+
+$color-zigzag-default:			$white;
+$color-zigzag-svg:				rgba($black, .5);
+$color-zigzag-svg-diapositive:	rgba($white, .5);
+// Settings 'transitions' extended versions, see mixins.scss
+/*
+	%trans-all
+	%trans-all-fast
+*/
+// ==================================================
+$trans-spd: 		400ms !default;
+$trans-spd-fast:	400ms / 1.5 !default;
+$trans-kind:		ease-in-out !default;
+$trans-kind-all:	$trans-kind !default;
+
+
+// settings for the loading bar in combination with the smoothstate javascript
+// ==================================================
+$loader-color-back: #ff00ff !default;
+$loader-color-front: #fff !default;
+$loader-size-bar: 30px !default;
+$loader-size-container: 50px !default;
+
+// Settings hamburger these are overriding hamburger.scss
+// ==================================================
+$hamburger-padding-x                       : 10px !default;
+$hamburger-padding-y                       : 10px !default;
+$hamburger-layer-width                     : 30px !default;
+$hamburger-layer-height                    : 4px !default;
+$hamburger-layer-spacing                   : 5px !default;
+$hamburger-layer-color                     : $black;
+$hamburger-layer-border-radius             : 0px !default;
+$hamburger-hover-opacity                   : 1 !default;
+$hamburger-hover-transition-duration       : 0.15s !default;
+$hamburger-hover-transition-timing-function: ease-in-out !default;
+$hamburger-bg-color						   : $white;
+$hamburger-bg-color-hover				   : $black;
+
+
+
+// Settings layzr these are overriding layzr.scss
+// ==================================================
+$layzr-image-bg:					#333 !default;
+$layzr-loading-bg:					#444 !default;
+$layzr-loading-animation-speed:		20s !default;
+$layzr-loading-w:					0rem !default;
+$layzr-loading-h:					$layzr-loading-w !default;
+$layzr-loading-border-kind:			solid !default; // solid, double
+$layzr-loading-border-size:			2rem !default;
+$layzr-loading-border-color:		#fff !default;
+
+
+
+// Settings used in the transition.scss
+// ==================================================
+$page-open-animation-duration:		0.5s !default;								// animation duration, and first delay
+$page-open-animation-kind:			ease-in;									// kind of easing
+$page-open-delay-starter:			$page-open-animation-duration !default;		// start with first delay, don't use zero
+$page-open-delay-multiplier:		0.10s !default;								// dealy between different delay numbers
+$page-open-delay-count:				20 !default;								// how many different delays to we need
+
+

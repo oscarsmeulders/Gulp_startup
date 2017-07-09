@@ -1,0 +1,7 @@
+.jekyll-metadata
+.sass-cache
+node_modules
+bower_components
+_site
+_wordpress
+dist

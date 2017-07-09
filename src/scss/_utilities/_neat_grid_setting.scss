@@ -1,0 +1,42 @@
+$container-grid: (
+	columns: 12,
+	gutter: 20px,
+);
+$container-grid-xlarge: (
+	columns: 12,
+	gutter: map-get($breakpoints-margins, xlarge),
+	media: map-get($breakpoints, xlarge)
+);
+$container-grid-xxlarge: (
+	columns: 12,
+	gutter: map-get($breakpoints-margins, xxlarge),
+	media: map-get($breakpoints, xxlarge)
+);
+$container-grid-xxxlarge: (
+	columns: 12,
+	gutter: map-get($breakpoints-margins, xxxlarge),
+	media: map-get($breakpoints, xxxlarge)
+);
+
+
+
+$card-color-grid: (
+	columns: 4,
+	gutter: 20px
+);
+
+$card-color-grid-xlarge: (
+	columns: 2,
+	gutter: map-get($breakpoints-margins, xlarge),
+	media: map-get($breakpoints, xlarge)
+);
+$card-color-grid-xxlarge: (
+	columns: 4,
+	gutter: map-get($breakpoints-margins, xxlarge),
+	media: map-get($breakpoints, xxlarge)
+);
+$card-color-grid-xxxlarge: (
+	columns: 5,
+	gutter: map-get($breakpoints-margins, xxxlarge),
+	media: map-get($breakpoints, xxxlarge)
+);

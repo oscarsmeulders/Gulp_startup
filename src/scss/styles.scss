@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+//@import 'normalize';
+@import 'reset';
+@import '_utilities/_settings';
+@import '_utilities/_mixins';
+
+@import '../../bower_components/mappy-breakpoints/mappy-breakpoints';
+//@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+//@import '../../bower_components/susy/sass/susy';
+@import '../../bower_components/typi/scss/typi';
+
+// extra custom components
+@import 'bourbon';
+@import '_neat_grid_setting';
+@import 'neat';
+
+@import '_utilities/_classes_usefull';
+
+// https://github.com/drublic/Sass-Mixins
+@import '_components/Sass-Mixins-master/mixins';
+
+//@import 'components/hamburgers/_sass/hamburgers/hamburgers';
+@import '_components/transitions/transitions';
+//@import 'components/layzr/layzr';
+
+// http://fontawesome.io/get-started/
+// http://fontawesome.io/icons/
+@import '_components/font-awesome-4.7.0/scss/font-awesome';
+
+
+
+/* neat code // scss codes
+
+	@each $item, $break in $breakpoints-layout-title-margins-top {
+		@include mappy-bp($break) {
+			margin-top: $break;
+		}
+	}
+
+
+	@include grid-container;
+	@include grid-column(12, $container-grid);
+	@include grid-media($container-grid-xlarge){
+		@include grid-column(12, $container-grid-xlarge);
+	}
+
+
+*/
+
+
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+html, body, * {
+	margin: 0;
+	padding: 0;
+	@include typi-base();
+	font-family: $font-body-family;
+	font-weight: $font-body-weight;
+	color: #000;
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	font-family: $font-head-family;
+	font-weight: $font-head-weight;
+}
+h1, .h1 {
+	@include typi($h1-sizes);
+}
+h2, .h2 {
+	@include typi($h2-sizes);
+}
+h3, .h3 {
+	@include typi($h3-sizes);
+}
+h4, .h4 {
+	@include typi($h4-sizes);
+}
+h5, .h5 {
+	@include typi($h5-sizes);
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+i {
+	vertical-align: middle;
+}
+
+#smoothstate {
+	height: 100%;
+}
+
+
