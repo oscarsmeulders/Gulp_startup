@@ -1,6 +1,5 @@
 ***
-#Gulp framework - Jekyll code
-Oscar Smeulders
+#Gulp framework - Jekyll - wordpress
 
 version 1.1
 

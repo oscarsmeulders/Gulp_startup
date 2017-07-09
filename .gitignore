@@ -3,5 +3,6 @@
 node_modules
 bower_components
 _site
-_wordpress
+__wordpress
 dist
+/__wordpress
