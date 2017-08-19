@@ -1,34 +1,49 @@
 @charset "utf-8";
 
-//@import 'normalize';
+
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL SCSS stuff
+
+/*
+@import 'normalize';
 @import 'reset';
-@import '_utilities/_settings';
+
 @import '_utilities/_mixins';
-
-@import '../../bower_components/mappy-breakpoints/mappy-breakpoints';
-//@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
-//@import '../../bower_components/susy/sass/susy';
-@import '../../bower_components/typi/scss/typi';
-
-// extra custom components
-@import 'bourbon';
-@import '_neat_grid_setting';
-@import 'neat';
-
 @import '_utilities/_classes_usefull';
 
 // https://github.com/drublic/Sass-Mixins
 @import '_components/Sass-Mixins-master/mixins';
 
-//@import 'components/hamburgers/_sass/hamburgers/hamburgers';
-@import '_components/transitions/transitions';
-//@import 'components/layzr/layzr';
-
 // http://fontawesome.io/get-started/
 // http://fontawesome.io/icons/
 @import '_components/font-awesome-4.7.0/scss/font-awesome';
 
+@import '_components/transitions/transitions';
+*/
 
+////////////////////////////////////////////////////////////////////////////////
+// OR Foundation
+@import '_foundation/foundation';
+@include foundation-everything;
+
+////////////////////////////////////////////////////////////////////////////////
+// OR custom
+//@import '_utilities/_settings';
+
+
+// @import '../../bower_components/mappy-breakpoints/mappy-breakpoints';
+// @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+// @import '../../bower_components/susy/sass/susy';
+// @import '../../bower_components/typi/scss/typi';
+
+// extra custom components
+// @import 'bourbon';
+// @import '_utilities/_neat_grid_setting';
+// @import 'neat';
+
+//@import 'components/hamburgers/_sass/hamburgers/hamburgers';
+
+//@import 'components/layzr/layzr';
 
 /* neat code // scss codes
 
@@ -49,6 +64,7 @@
 */
 
 
+/*
 
 html, body {
 	width: 100%;
@@ -96,5 +112,6 @@ i {
 #smoothstate {
 	height: 100%;
 }
+*/
 
 

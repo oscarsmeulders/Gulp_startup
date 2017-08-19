@@ -32,6 +32,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.4",
+    "node-bourbon": "^4.2.8",
     "node-normalize-scss": "^3.0.0",
     "node-reset-scss": "^1.0.1",
     "run-sequence": "^2.0.0"

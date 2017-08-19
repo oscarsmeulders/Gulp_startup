@@ -11,6 +11,7 @@
     "breakpoint-sass": "^2.7.0",
     "susy": "^2.2.12",
     "typi": "^2.3.0",
-    "mappy-breakpoints": "^0.2.3"
+    "mappy-breakpoints": "^0.2.3",
+	"foundation-sites": "^6.4.1"
   }
 }
